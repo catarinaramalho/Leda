@@ -19,11 +19,11 @@ public class RepositorioProdutoArrayListSolucao implements RepositorioProdutosSo
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
 	 * por enquanto com o uso de generics em ArrayList.
 	 */
-	private ArrayList produtos;
+	private ArrayList<Produto> produtos;
 
 	public RepositorioProdutoArrayListSolucao(int size) {
 		super();
-		this.produtos = new ArrayList();
+		this.produtos = new ArrayList<Produto>();
 	}
 
 	/**
@@ -59,7 +59,7 @@ public class RepositorioProdutoArrayListSolucao implements RepositorioProdutosSo
 	 * Insere um novo produto (sem se preocupar com duplicatas)
 	 */
 	public void inserir(Produto produto) {
-		produtos.add(produto);
+		this.produtos.add(produto);
 	}
 
 	/**
@@ -71,8 +71,8 @@ public class RepositorioProdutoArrayListSolucao implements RepositorioProdutosSo
 		if (!produtos.contains(produto)) {
 			throw new RuntimeException("Produto inexistente");
 		} else {
-			produtos.remove(produto);
-			produtos.add(produto);
+			this.produtos.remove(produto);
+			this.produtos.add(produto);
 		}
 	}
 

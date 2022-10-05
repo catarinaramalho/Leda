@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-09-29T11:40:35.071-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 150.165.42.184 at 29-09-2022 11*40*35</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-10-05T14:34:56.128-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 150.165.74.28 at 05-10-2022 14*34*56</message>
+</record>
