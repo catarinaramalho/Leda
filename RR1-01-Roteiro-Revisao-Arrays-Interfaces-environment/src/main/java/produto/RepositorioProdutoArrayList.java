@@ -1,6 +1,8 @@
 package produto;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 /**
  * Classe que representa um repositório de produtos usando ArrayList como
@@ -17,7 +19,7 @@ public class RepositorioProdutoArrayList {
 	 * A estrutura onde os produtos sao mantidos. Voce nao precisa se preocupar
 	 * por enquanto com o uso de generics em ArrayList.
 	 */
-	private ArrayList produtos;
+	private ArrayList<Produto> produtos;
 
 	/**
 	 * A posicao do ultimo elemento inserido no array de produtos. o valor
@@ -40,7 +42,7 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	private int procurarIndice(int codigo) {
-		for (int i = 0; i < this.produtos.lenght; i++) {
+		for (int i = 0; i < this.produtos.size(); i++) {
 			if (this.produtos.get(i).getCodigo() == codigo){
 				return i;
 			}
@@ -55,7 +57,7 @@ public class RepositorioProdutoArrayList {
 	 * @return
 	 */
 	public boolean existe(int codigo) {
-		for (int i = 0; i < this.produtos.lenght; i++) {
+		for (int i = 0; i < this.produtos.size(); i++) {
 			if (this.produtos.get(i).getCodigo() == codigo){
 				return true;
 			}
@@ -92,12 +94,11 @@ public class RepositorioProdutoArrayList {
 	 * @param codigo
 	 */
 	public void remover(int codigo) {
-		int indice = procurarIndice(produto.getCodigo());
+		int indice = procurarIndice(codigo);
 		if (indice == -1){
 			throw new NoSuchElementException();
 		}
 		this.produtos.remove(indice);
-		this.produtos.removeAll(Array.asList("", null));
 	}
 
 	/**
@@ -109,13 +110,12 @@ public class RepositorioProdutoArrayList {
 	 */
 	public Produto procurar(int codigo) {
 		if (existe(codigo)) {
-			for (int i = 0; i < this.produtos.lenght; i++) {
+			for (int i = 0; i < this.produtos.size(); i++) {
 				if (this.produtos.get(i).getCodigo() == codigo){
 					return this.produtos.get(i);
 				}
 			}
-		} else {
-			throw new NoSuchElementException();
 		}
+		return null;
 	}
 }
