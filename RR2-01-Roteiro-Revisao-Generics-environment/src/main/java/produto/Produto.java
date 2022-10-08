@@ -16,7 +16,7 @@ public class Produto {
 	}
 
 	public int getCodigo() {
-		return codigo;
+		return this.codigo;
 	}
 
 	public void setCodigo(int codigo) {
@@ -24,7 +24,7 @@ public class Produto {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -32,7 +32,7 @@ public class Produto {
 	}
 
 	public double getPreco() {
-		return preco;
+		return this.preco;
 	}
 
 	public void setPreco(double preco) {
@@ -40,7 +40,7 @@ public class Produto {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return this.descricao;
 	}
 
 	public void setDescricao(String descricao) {

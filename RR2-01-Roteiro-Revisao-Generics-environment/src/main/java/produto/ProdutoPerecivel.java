@@ -13,7 +13,7 @@ public class ProdutoPerecivel extends Produto {
 	}
 
 	public GregorianCalendar getDataValidade() {
-		return dataValidade;
+		return this.dataValidade;
 	}
 
 	public void setDataValidade(GregorianCalendar dataValidade) {

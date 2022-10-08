@@ -12,7 +12,7 @@ public class ProdutoNaoPerecivel extends Produto {
 	}
 
 	public String getFormaAcondicionamento() {
-		return formaAcondicionamento;
+		return this.formaAcondicionamento;
 	}
 
 	public void setFormaAcondicionamento(String formaAcondicionamento) {
