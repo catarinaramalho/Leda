@@ -27,14 +27,14 @@ public class TestarVetor {
 	@Test
 	public void testInserir() {
 		assertTrue(vetorNaoVazio.isVazio());
-		vetorNaoVazio.inserir(new Aluno("Joao Epifanio", 5.0));
+		vetorNaoVazio.inserir(new Aluno("Catarina Ramalho", 5.0));
 		assertFalse(vetorNaoVazio.isVazio());
 
 	}
 
 	@Test
 	public void testRemover() {
-		Aluno novoAluno = new Aluno("Joao Epifanio", 5.0);
+		Aluno novoAluno = new Aluno("Catarina Ramalho", 5.0);
 		vetorNaoVazio.inserir(novoAluno);
 		assertFalse(vetorNaoVazio.isVazio());
 		vetorNaoVazio.remover(novoAluno);
@@ -43,12 +43,12 @@ public class TestarVetor {
 
 	@Test
 	public void testProcurar() {
-		Aluno novoAluno = new Aluno("Joao Epifanio", 5.0);
+		Aluno novoAluno = new Aluno("Catarina Ramalho", 5.0);
 		vetorNaoVazio.inserir(novoAluno);
 
 		Aluno procurado = vetorNaoVazio.procurar(novoAluno);
 		assertEquals(novoAluno, procurado);
-		procurado = vetorNaoVazio.procurar(new Aluno("Ze", 6.0));
+		procurado = vetorNaoVazio.procurar(new Aluno("Leones", 6.0));
 		assertNull(procurado);
 	}
 
@@ -60,7 +60,7 @@ public class TestarVetor {
 	@Test
 	public void testIsCheio() {
 		for (int i = 0; i < 10; i++) {
-			Aluno novoAluno = new Aluno("Joao Epifanio", 5.0);
+			Aluno novoAluno = new Aluno("Catarina Ramalho", 5.0);
 			vetorNaoVazio.inserir(novoAluno);
 		}
 		assertTrue(vetorNaoVazio.isCheio());
@@ -68,8 +68,8 @@ public class TestarVetor {
 
 	@Test
 	public void testMaximo() {
-		Aluno novoAluno1 = new Aluno("Joao Epifanio", 5.0);
-		Aluno novoAluno2 = new Aluno("Jose Laurentino", 6.0);
+		Aluno novoAluno1 = new Aluno("Catarina Ramalho", 5.0);
+		Aluno novoAluno2 = new Aluno("Jônatas", 6.0);
 		vetorNaoVazio.inserir(novoAluno1);
 		vetorNaoVazio.inserir(novoAluno2);
 		Aluno maximo = vetorNaoVazio.maximo();
@@ -78,8 +78,8 @@ public class TestarVetor {
 
 	@Test
 	public void testMinimo() {
-		Aluno novoAluno1 = new Aluno("Joao Epifanio", 5.0);
-		Aluno novoAluno2 = new Aluno("Jose Laurentino", 6.0);
+		Aluno novoAluno1 = new Aluno("Catarina Ramalho", 5.0);
+		Aluno novoAluno2 = new Aluno("Jônatas", 6.0);
 		vetorNaoVazio.inserir(novoAluno1);
 		vetorNaoVazio.inserir(novoAluno2);
 		Aluno minimo = vetorNaoVazio.minimo();
