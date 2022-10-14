@@ -109,7 +109,7 @@ public class MetodosRecursivos {
 		if (n == 1) {
 			// caso base: nao faz nada
 		} else {
-			result = progressaoAritmetica(termoInicial, razao, n - 1) * razao;
+			result = progressaoGeometrica(termoInicial, razao, n - 1) * razao;
 		}
 		return result;
 	}

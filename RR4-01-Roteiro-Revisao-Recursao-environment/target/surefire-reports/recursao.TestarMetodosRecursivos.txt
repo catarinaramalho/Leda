@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: vetor.TestarVetor
+Test set: recursao.TestarMetodosRecursivos
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 sec
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.127 sec
