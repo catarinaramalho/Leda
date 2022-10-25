@@ -13,28 +13,29 @@ import util.Util;
  */
 public class QuickSort<T extends Comparable<T>> extends AbstractSorting<T> {
 
-	private int partition (T[] array, int leftIndex, int rightIndex) {
-        
+    private int partition(T[] array, int leftIndex, int rightIndex) {
+
         T pivot = array[leftIndex];
         int i = leftIndex;
 
         for (int j = leftIndex + 1; j <= rightIndex; j++) {
-            if (array[j].compareTo(pivot)<=0) {
-                i+=1;
+            if (array[j].compareTo(pivot) <= 0) {
+                i += 1;
                 Util.swap(array, i, j);
             }
         }
 
         Util.swap(array, leftIndex, i);
-        
-        return i; 
+
+        return i;
     }
-	@Override
-	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (leftIndex < rightIndex) {
-			int indexPivot = partition(array, leftIndex, rightIndex);
-			sort(array, leftIndex, indexPivot - 1);
-			sort(array, indexPivot + 1, rightIndex);	
-		}
-	}
+
+    @Override
+    public void sort(T[] array, int leftIndex, int rightIndex) {
+        if (leftIndex < rightIndex) {
+            int indexPivot = partition(array, leftIndex, rightIndex);
+            sort(array, leftIndex, indexPivot - 1);
+            sort(array, indexPivot + 1, rightIndex);
+        }
+    }
 }
