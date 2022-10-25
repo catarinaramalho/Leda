@@ -74,8 +74,8 @@ public class StudentSortingTest {
 
 	public void genericTest(Integer[] array) {
 		Integer[] copy1 = {};
-		if(array.length > 0){
-			copy1 = Arrays.copyOf(array, array.length);			
+		if (array.length > 0) {
+			copy1 = Arrays.copyOf(array, array.length);
 		}
 		implementation.sort(array);
 		Arrays.sort(copy1);
@@ -84,6 +84,7 @@ public class StudentSortingTest {
 
 	@Test
 	public void testSort01() {
+		genericTest(vetorTamPar);
 	}
 
 	@Test
@@ -116,31 +117,31 @@ public class StudentSortingTest {
 
 	@Test
 	public void testSort06() {
-		Integer[] vetor = new Integer[] {4,7,5,8};
+		Integer[] vetor = new Integer[] { 4, 7, 5, 8 };
 		genericTest(vetor);
 	}
 
 	@Test
 	public void testSort07() {
-		Integer[] vetor = new Integer[] {4};
+		Integer[] vetor = new Integer[] { 4 };
 		genericTest(vetor);
 	}
 
 	@Test
 	public void testSort08() {
-		Integer[] vetor = new Integer[] {1,2,3,5,0};
+		Integer[] vetor = new Integer[] { 1, 2, 3, 5, 0 };
 		genericTest(vetor);
 	}
 
 	@Test
 	public void testSort09() {
-		Integer[] vetor = new Integer[] {1,2,3,5};
+		Integer[] vetor = new Integer[] { 1, 2, 3, 5 };
 		genericTest(vetor);
 	}
 
 	@Test
 	public void testSort10() {
-		Integer[] vetor = new Integer[] {7,2,1,3};
+		Integer[] vetor = new Integer[] { 7, 2, 1, 3 };
 		genericTest(vetor);
 	}
 }

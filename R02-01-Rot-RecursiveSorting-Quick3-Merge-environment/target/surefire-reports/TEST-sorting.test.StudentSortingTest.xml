@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="sorting.test.StudentSortingTest" time="0.02" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="sorting.test.StudentSortingTest" time="0.043" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.15+10-Ubuntu-0ubuntu0.21.10.1"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/catarina/Leda/R01-01-Rot-SimpleSorting-Bidirectional-Bubble-environment"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/catarina/Leda/R02-01-Rot-RecursiveSorting-Quick3-Merge-environment"/>
     <property name="java.vm.vendor" value="Private Build"/>
     <property name="java.vendor.url" value="Unknown"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/catarina/Leda/R01-01-Rot-SimpleSorting-Bidirectional-Bubble-environment"/>
+    <property name="user.dir" value="/home/catarina/Leda/R02-01-Rot-RecursiveSorting-Quick3-Merge-environment"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.15+10-Ubuntu-0ubuntu0.21.10.1"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
@@ -60,14 +60,14 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort01" time="0.019"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort01" time="0.026"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort02" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort03" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort04" time="0"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort03" time="0.01"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort04" time="0.001"/>
   <testcase classname="sorting.test.StudentSortingTest" name="testSort05" time="0.001"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort06" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort07" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort08" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort09" time="0"/>
-  <testcase classname="sorting.test.StudentSortingTest" name="testSort10" time="0"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort06" time="0.001"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort07" time="0.001"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort08" time="0.001"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort09" time="0.001"/>
+  <testcase classname="sorting.test.StudentSortingTest" name="testSort10" time="0.001"/>
 </testsuite>

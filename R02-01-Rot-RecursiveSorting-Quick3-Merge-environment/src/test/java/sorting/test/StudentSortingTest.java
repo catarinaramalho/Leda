@@ -7,6 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
+import sorting.divideAndConquer.MergeSort;
+import sorting.divideAndConquer.QuickSort;
+import sorting.divideAndConquer.hybridMergesort.HybridMergeSort;
+import sorting.divideAndConquer.quicksort3.QuickSortMedianOfThree;
 
 public class StudentSortingTest {
 
@@ -36,10 +40,11 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		// TODO O aluno deve instanciar sua implementação abaixo ao invés de
-		// null
-		this.implementation = null;
-		Assert.fail("Implementation not provided");
+		//this.implementation = new MergeSort<Integer>();
+		//this.implementation = new QuickSort<Integer>();
+		//this.implementation = new QuickSortMedianOfThree<Integer>();
+		this.implementation = new HybridMergeSort<Integer>();
+
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
@@ -106,4 +111,34 @@ public class StudentSortingTest {
 	 * SEGUIR A ESTRUTURA DOS MÉTODOS DE TESTE ACIMA DESCRITOS, ORDENANDO APENAS
 	 * UMA PARTE DO ARRAY.
 	 */
+
+	@Test
+	public void testSort06() {
+		Integer[] vetor = new Integer[] {4,7,5,8};
+		genericTest(vetor);
+	}
+
+	@Test
+	public void testSort07() {
+		Integer[] vetor = new Integer[] {4};
+		genericTest(vetor);
+	}
+
+	@Test
+	public void testSort08() {
+		Integer[] vetor = new Integer[] {1,2,3,5,0};
+		genericTest(vetor);
+	}
+
+	@Test
+	public void testSort09() {
+		Integer[] vetor = new Integer[] {1,2,3,5};
+		genericTest(vetor);
+	}
+
+	@Test
+	public void testSort10() {
+		Integer[] vetor = new Integer[] {7,2,1,3};
+		genericTest(vetor);
+	}
 }

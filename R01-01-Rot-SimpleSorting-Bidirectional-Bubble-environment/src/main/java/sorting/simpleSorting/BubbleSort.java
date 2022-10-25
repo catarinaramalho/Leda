@@ -16,11 +16,11 @@ public class BubbleSort<T extends Comparable<T>> extends AbstractSorting<T> {
 		while (swapped) {
 			swapped = false;
 			for (int i = leftIndex; i < rightIndex; i++) {
-				if(array[i].compareTo(array[i+1])>0){
-					Util.swap(array, i, i+1);
+				if (array[i].compareTo(array[i + 1]) > 0) {
+					Util.swap(array, i, i + 1);
 					swapped = true;
 				}
-			}	
-		} 
+			}
+		}
 	}
 }
