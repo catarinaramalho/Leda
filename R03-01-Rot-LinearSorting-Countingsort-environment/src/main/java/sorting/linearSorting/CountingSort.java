@@ -17,15 +17,15 @@ public class CountingSort extends AbstractSorting<Integer> {
 
 	@Override
 	public void sort(Integer[] array, int leftIndex, int rightIndex) {
-		int[] C = new int[maior(array,leftIndex,rightIndex)];
+		int[] C = new int[maior(array,leftIndex, rightIndex)];
 
         // frequência
-        for (int i = 0; i < C.length; i++) {
+        for (int i = leftIndex; i < array.length; i++) {
             C[array[i] - 1] += 1;
         }
         
         // cumulativa
-        for (int i = 1; i < C.length; i++) {
+        for (int i = leftIndex+1; i < C.length; i++) {
             C[i] += C[i-1];
         }
 
