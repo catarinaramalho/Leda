@@ -17,15 +17,15 @@ public class CountingSort extends AbstractSorting<Integer> {
 
 	@Override
 	public void sort(Integer[] array, int leftIndex, int rightIndex) {
-		int[] C = new int[rightIndex+1];
+		int[] C = new int[maior(array,leftIndex,rightIndex)];
 
         // frequência
-        for (int i = leftIndex; i < array.length; i++) {
+        for (int i = 0; i < C.length; i++) {
             C[array[i] - 1] += 1;
         }
         
         // cumulativa
-        for (int i = leftIndex+1; i < C.length; i++) {
+        for (int i = 1; i < C.length; i++) {
             C[i] += C[i-1];
         }
 
@@ -39,6 +39,16 @@ public class CountingSort extends AbstractSorting<Integer> {
         for (int index = 0; index < B.length; index++) {
 			array[index]=B[index];
 		}
+	}
+
+	public int maior(Integer[] array,int leftIndex, int rightIndex){
+		int maior = array[0];
+		for (int i = leftIndex; i < rightIndex; i++) {
+			if (array[i]>maior){
+				maior = array[i];
+			}
+		}
+		return maior;
 	}
 
 }
