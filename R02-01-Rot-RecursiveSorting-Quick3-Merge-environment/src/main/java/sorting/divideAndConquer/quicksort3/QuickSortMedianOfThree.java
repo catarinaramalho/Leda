@@ -57,6 +57,9 @@ public class QuickSortMedianOfThree<T extends Comparable<T>> extends
 	}
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
+		if(leftIndex >= rightIndex || rightIndex >= array.length){
+			return;
+		}
 		if (leftIndex < rightIndex) {
 			int indexPivot = partition(array, leftIndex, rightIndex);
 			sort(array, leftIndex, indexPivot - 1);

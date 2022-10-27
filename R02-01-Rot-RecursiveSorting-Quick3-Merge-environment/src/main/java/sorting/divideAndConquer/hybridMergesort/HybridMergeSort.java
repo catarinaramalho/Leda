@@ -37,7 +37,7 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 
 			int j = i;
 
-			while (j > 0 && array[j].compareTo(array[j - 1]) < 0) {
+			while (j > leftIndex && array[j].compareTo(array[j - 1]) < 0) {
 				Util.swap(array, j, j - 1);
 				j -= 1;
 			}
@@ -102,7 +102,10 @@ public class HybridMergeSort<T extends Comparable<T>> extends
 	}
 
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (array.length <= SIZE_LIMIT) {
+		if(leftIndex >= rightIndex || rightIndex >= array.length){
+			return;
+		}
+		if ((rightIndex-leftIndex+1) <= SIZE_LIMIT) {
 			insertionSort(array, leftIndex, rightIndex);
 			INSERTIONSORT_APPLICATIONS++;
 		} else {
