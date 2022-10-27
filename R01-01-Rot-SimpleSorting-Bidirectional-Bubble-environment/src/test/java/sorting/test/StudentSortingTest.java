@@ -144,4 +144,5 @@ public class StudentSortingTest {
 		Integer[] vetor = new Integer[] { 7, 2, 1, 3 };
 		genericTest(vetor);
 	}
+	
 }

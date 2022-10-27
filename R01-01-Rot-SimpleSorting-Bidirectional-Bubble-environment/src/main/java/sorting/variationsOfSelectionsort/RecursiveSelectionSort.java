@@ -16,7 +16,7 @@ public class RecursiveSelectionSort<T extends Comparable<T>> extends
 	 */
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
-		if (rightIndex <= leftIndex) {
+		if(leftIndex >= rightIndex || rightIndex >= array.length){
 			return;
 		}
 		int indexMenor = leftIndex;
