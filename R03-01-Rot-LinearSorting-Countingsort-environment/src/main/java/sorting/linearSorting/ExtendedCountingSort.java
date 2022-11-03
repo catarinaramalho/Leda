@@ -12,35 +12,35 @@ public class ExtendedCountingSort extends AbstractSorting<Integer> {
 
 	@Override
 	public void sort(Integer[] array, int leftIndex, int rightIndex) {
-		if (array == null || leftIndex < 0 || leftIndex >= rightIndex || rightIndex >= array.length) {
-			return;
+		if (array != null && leftIndex >= 0 && leftIndex < rightIndex && rightIndex < array.length) {
+			int maior = maior(array, leftIndex, rightIndex);
+			int menor = menor(array, leftIndex, rightIndex);
+
+			int[] C = new int[maior - menor + 1];
+
+			for (int i = leftIndex; i <= rightIndex; i++) {
+				C[array[i] - menor] += 1;
+			}
+
+			for (int i = 1; i < C.length; i++) {
+				C[i] += C[i - 1];
+			}
+
+			int[] B = new int[rightIndex - leftIndex + 1];
+
+			for (int i = rightIndex; i >= leftIndex; i--) {
+				B[C[array[i] - menor] - 1] = array[i];
+				C[array[i] - menor] -= 1;
+			}
+
+			int indice = 0;
+			for (int i = leftIndex; i <= rightIndex; i++) {
+				array[i] = B[indice];
+				indice++;
+
+			}
 		}
-		int maior = maior(array, leftIndex, rightIndex);
-		int menor = menor(array, leftIndex, rightIndex);
-
-		int[] C = new int[maior - menor + 1];
-
-		for (int i = leftIndex; i <= rightIndex; i++) {
-			C[array[i] - menor] += 1;
-		}
-
-		for (int i = 1; i < C.length; i++) {
-			C[i] += C[i - 1];
-		}
-
-		int[] B = new int[rightIndex - leftIndex + 1];
-
-		for (int i = rightIndex; i >= leftIndex; i--) {
-			B[C[array[i] - menor] - 1] = array[i];
-			C[array[i] - menor] -= 1;
-		}
-
-		int indice = 0;
-		for (int i = leftIndex; i <= rightIndex; i++) {
-			array[i] = B[indice];
-			indice++;
-
-		}
+		
 	}
 
 	private int maior(Integer[] array, int leftIndex, int rightIndex) {
