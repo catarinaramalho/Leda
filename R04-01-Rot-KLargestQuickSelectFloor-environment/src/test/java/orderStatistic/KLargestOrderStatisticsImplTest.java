@@ -9,83 +9,89 @@ import org.junit.Test;
 public class KLargestOrderStatisticsImplTest {
     private KLargestOrderStatisticsImpl<Integer> implementacao;
     private Integer[] array;
-   
+
     @Before
     public void setUp() {
         this.implementacao = new KLargestOrderStatisticsImpl<>();
-        this.array = new Integer[] { 10, 18, 4, 15, 11, 40, 45, 21, 13, 12 };
+        this.array = new Integer[] { 30, 28, 7, 29, 11, 26, 4, 22, 23, 31 };
     }
+
     // Testes do Método OrderStatistic
     // Testes de casos válidos
     @Test
-    public void testOrderStatistics1() {
-        assertEquals(this.implementacao.orderStatistics(this.array, 1), (Integer)4);
+    public void testOrderStatistics01() {
+        assertEquals(this.implementacao.orderStatistics(this.array, 1), (Integer) 4);
     }
 
     @Test
-    public void testOrderStatistics2() {
-        assertEquals(this.implementacao.orderStatistics(this.array, 2), (Integer)10);
+    public void testOrderStatistics02() {
+        assertEquals(this.implementacao.orderStatistics(this.array, 2), (Integer) 7);
     }
 
     @Test
-    public void testOrderStatistics3() {
-        assertEquals(this.implementacao.orderStatistics(this.array, 5), (Integer)13);
+    public void testOrderStatistics03() {
+        assertEquals(this.implementacao.orderStatistics(this.array, 5), (Integer) 23);
     }
+
     // Teste com array nulo
     @Test
-    public void testOrderStatistics4() {
+    public void testOrderStatistics04() {
         assertEquals(this.implementacao.orderStatistics(null, 5), null);
     }
-    // Teste com k >= tamanho do array
+
+    // Teste com k > tamanho do array
     @Test
-    public void testOrderStatistics5() {
-        assertEquals(this.implementacao.orderStatistics((this.array),11), null);
-    }
-    // Teste com k < 0 
-    @Test
-    public void testOrderStatistics6() {
-        assertEquals(this.implementacao.orderStatistics((this.array),-1), null);
-    }
-    // Teste com array vazio 
-    @Test
-    public void testOrderStatistics7() {
-        assertEquals(this.implementacao.orderStatistics( new Integer[] {},5), null);
+    public void testOrderStatistics05() {
+        assertEquals(this.implementacao.orderStatistics((this.array), 11), null);
     }
 
-    //Testes do método getKLargest
+    // Teste com k < 0
+    @Test
+    public void testOrderStatistics06() {
+        assertEquals(this.implementacao.orderStatistics((this.array), -1), null);
+    }
 
-    //Testes de casos Válidos - VERIFICAR ORDEM???
+    // Teste com array vazio
     @Test
-    public void testGetKLargest1() {
-        assertArrayEquals(this.implementacao.getKLargest(this.array, 2),new Integer[] {40,45});
+    public void testOrderStatistics07() {
+        assertEquals(this.implementacao.orderStatistics(new Integer[] {}, 5), null);
     }
+
+    // Testes do método getKLargest
+
+    // Testes de casos Válidos
     @Test
-    public void testGetKLargest2() {
-        assertArrayEquals(this.implementacao.getKLargest(this.array, 3),new Integer[] {21,40,45});
+    public void testGetKLargest01() {
+        assertArrayEquals(this.implementacao.getKLargest(this.array, 1), new Integer[] { 31 });
     }
+
+    @Test
+    public void testGetKLargest02() {
+        assertArrayEquals(this.implementacao.getKLargest(this.array, 2), new Integer[] { 30, 31 });
+    }
+
     // Teste com array nulo
     @Test
-    public void testGetKLargest3() {
+    public void testGetKLargest03() {
         assertArrayEquals(this.implementacao.getKLargest(null, 5), new Integer[] {});
     }
-    // Teste com k >= tamanho do array
+
+    // Teste com k > tamanho do array
     @Test
-    public void testGetKLargest4() {
-        assertArrayEquals(this.implementacao.getKLargest((this.array),11), new Integer[] {});
-    }
-    // Teste com k < 0 
-    @Test
-    public void testGetKLargest5() {
-        assertArrayEquals(this.implementacao.getKLargest((this.array),-1), new Integer[] {});
-    }
-    // Teste com array vazio 
-    @Test
-    public void testGetKLargest6() {
-        assertArrayEquals(this.implementacao.getKLargest( new Integer[] {},5), new Integer[] {});
+    public void testGetKLargest04() {
+        assertArrayEquals(this.implementacao.getKLargest((this.array), 11), new Integer[] {});
     }
 
+    // Teste com k < 0
+    @Test
+    public void testGetKLargest05() {
+        assertArrayEquals(this.implementacao.getKLargest((this.array), -1), new Integer[] {});
+    }
 
+    // Teste com array vazio
+    @Test
+    public void testGetKLargest06() {
+        assertArrayEquals(this.implementacao.getKLargest(new Integer[] {}, 5), new Integer[] {});
+    }
 
 }
-
-

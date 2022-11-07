@@ -1,5 +1,7 @@
 package orderStatistic;
 
+import util.Util;
+
 /**
  * O quickselect eh um algoritmo baseado no quicksort para
  * descobrir/selectionar, em tempo linear, a k-esima estatistica de ordem
@@ -32,17 +34,51 @@ public class QuickSelect<T extends Comparable<T>> {
 	 *
 	 *
 	 * @param array
-	 *            o array de dados a procurar o k-esimo menor elemento
-	 *            este array normalmente nao esta ordenado
+	 *              o array de dados a procurar o k-esimo menor elemento
+	 *              este array normalmente nao esta ordenado
 	 * @param k
-	 *            a ordem do elemento desejado. 1 significa primeiro menor
-	 *            elemento, 2 significa segundo menor elemento e assim por
-	 *            diante
+	 *              a ordem do elemento desejado. 1 significa primeiro menor
+	 *              elemento, 2 significa segundo menor elemento e assim por
+	 *              diante
 	 * @return
 	 *
 	 */
 	public T quickSelect(T[] array, int k) {
-		// TODO Implement your code here
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (array != null && array.length > 0 && k >= 1 && k <= array.length) {
+			return quickSelectRecursivo(array, k, 0, array.length - 1);
+		}
+
+		return null;
+	}
+
+	private int partition(T[] array, int leftIndex, int rightIndex) {
+
+		T pivot = array[leftIndex];
+		int i = leftIndex;
+
+		for (int j = leftIndex + 1; j <= rightIndex; j++) {
+			if (array[j].compareTo(pivot) <= 0) {
+				i += 1;
+				Util.swap(array, i, j);
+			}
+		}
+
+		Util.swap(array, leftIndex, i);
+
+		return i;
+	}
+
+	private T quickSelectRecursivo(T[] array, int k, int leftIndex, int rightIndex) {
+		if (array != null && leftIndex >= 0 && leftIndex < rightIndex && rightIndex < array.length) {
+			int indexPivot = partition(array, leftIndex, rightIndex);
+			if (k < indexPivot + 1) {
+				return quickSelectRecursivo(array, k, leftIndex, rightIndex - 1);
+			} else if (k > indexPivot + 1) {
+				return quickSelectRecursivo(array, k, indexPivot + 1, rightIndex);
+			}
+
+			return array[indexPivot];
+		}
+		return array[k - 1];
 	}
 }
