@@ -61,11 +61,11 @@ public class QueueUsingStack<T> implements Queue<T> {
 
 	@Override
 	public boolean isEmpty() {
-		return (this.stack1.isEmpty());
+		return this.stack1.isEmpty();
 	}
 
 	@Override
 	public boolean isFull() {
-		return (this.stack1.isFull());
+		return this.stack1.isFull();
 	}
 }

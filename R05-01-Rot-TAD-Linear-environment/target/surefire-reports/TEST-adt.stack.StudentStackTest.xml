@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="9" failures="0" name="adt.stack.StudentStackTest" time="0.007" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="adt.stack.StudentStackTest" time="0.005" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.4+8-Ubuntu-120.04"/>
@@ -57,13 +57,13 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.stdout.encoding" value="UTF-8"/>
   </properties>
-  <testcase classname="adt.stack.StudentStackTest" name="testPushNull" time="0.005"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPushNull" time="0.004"/>
   <testcase classname="adt.stack.StudentStackTest" name="testTopNull" time="0"/>
   <testcase classname="adt.stack.StudentStackTest" name="testPop" time="0"/>
   <testcase classname="adt.stack.StudentStackTest" name="testTop" time="0"/>
   <testcase classname="adt.stack.StudentStackTest" name="testPush" time="0"/>
   <testcase classname="adt.stack.StudentStackTest" name="testPushComErro" time="0"/>
-  <testcase classname="adt.stack.StudentStackTest" name="testPopComErro" time="0.001"/>
-  <testcase classname="adt.stack.StudentStackTest" name="testIsFull" time="0"/>
-  <testcase classname="adt.stack.StudentStackTest" name="testIsEmpty" time="0.001"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPopComErro" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testIsFull" time="0.001"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testIsEmpty" time="0"/>
 </testsuite>
