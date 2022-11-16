@@ -8,28 +8,31 @@ public class CircularQueue<T> implements Queue<T> {
 	private int elements;
 
 	public CircularQueue(int size) {
-		array = (T[]) new Object[size];
-		head = -1;
-		tail = -1;
-		elements = 0;
+		this.array = (T[]) new Object[size];
+		this.head = -1;
+		this.tail = -1;
+		this.elements = 0;
 	}
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if (this.isFull()) {
-			throw new QueueOverflowException();
+		if (element != null) {
+			if (this.isFull()) {
+				throw new QueueOverflowException();
 
-		}
-		if (this.isEmpty()) {
-			this.head = 0;
-			this.tail = 0;
-			this.array[0] = element;
-		} else {
-			tail = (tail + 1) % array.length;
-			this.array[tail] = element;
+			}
+			if (this.isEmpty()) {
+				this.head = 0;
+				this.tail = 0;
+				this.array[0] = element;
+			} else {
+				this.tail = (this.tail + 1) % this.array.length;
+				this.array[this.tail] = element;
+			}
+
+			this.elements++;
 		}
 
-		elements++;
 	}
 
 	@Override
@@ -38,22 +41,26 @@ public class CircularQueue<T> implements Queue<T> {
 			throw new QueueUnderflowException();
 
 		}
-		T removed = array[head];
+		T dequeued = this.array[this.head];
 
 		if (this.head == this.tail) {
 			this.head = -1;
 			this.tail = -1;
 		} else {
-			this.head = ((this.head + 1) % array.length);
+			this.head = ((this.head + 1) % this.array.length);
 		}
 
-		elements--;
-		return removed;
+		this.elements--;
+		return dequeued;
 	}
 
 	@Override
 	public T head() {
-		return this.array[head];
+		T head = null;
+		if (!this.isEmpty()) {
+			head = this.array[this.head];
+		}
+		return head;
 	}
 
 	@Override
@@ -63,7 +70,7 @@ public class CircularQueue<T> implements Queue<T> {
 
 	@Override
 	public boolean isFull() {
-		return ((this.tail + 1) % array.length == this.head);
+		return ((this.tail + 1) % this.array.length == this.head);
 	}
 
 }

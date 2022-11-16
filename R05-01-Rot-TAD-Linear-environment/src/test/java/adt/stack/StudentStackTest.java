@@ -33,13 +33,18 @@ public class StudentStackTest {
 	private void getImplementations() {
 		stack1 = new StackImpl<Integer>(4);
 		stack2 = new StackImpl<Integer>(2);
-		stack3 = null;
+		stack3 = new StackImpl<Integer>(2);
 	}
 
 	// MÉTODOS DE TESTE
 	@Test
 	public void testTop() {
 		assertEquals(new Integer(3), stack1.top());
+	}
+
+	@Test
+	public void testTopNull() {// Teste Criado
+		assertEquals(null, stack3.top());
 	}
 
 	@Test
@@ -61,6 +66,12 @@ public class StudentStackTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Test
+	public void testPushNull() throws StackOverflowException {
+		stack1.push(null);
+		assertEquals(stack1.top(), new Integer(3));
 	}
 
 	@Test(expected = StackOverflowException.class)
