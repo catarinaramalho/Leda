@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="adt.queue.StudentQueueTest" time="0" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="adt.queue.StudentQueueTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="17.0.4+8-Ubuntu-120.04"/>
@@ -66,5 +66,5 @@
   <testcase classname="adt.queue.StudentQueueTest" name="testDequeue" time="0"/>
   <testcase classname="adt.queue.StudentQueueTest" name="testIsFull" time="0"/>
   <testcase classname="adt.queue.StudentQueueTest" name="testIsEmpty" time="0"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueueComErro" time="0"/>
+  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueueComErro" time="0.001"/>
 </testsuite>
