@@ -37,9 +37,13 @@ public class StudentQueueTest {
 		queue2 = new QueueImpl<Integer>(2);
 		queue3 = new QueueImpl<Integer>(2);
 		// CircularQueue
-		queue1 = new CircularQueue<Integer>(4);
-		queue2 = new CircularQueue<Integer>(2);
-		queue3 = new CircularQueue<Integer>(2);
+		//queue1 = new CircularQueue<Integer>(4);
+		//queue2 = new CircularQueue<Integer>(2);
+		//queue3 = new CircularQueue<Integer>(2);
+		// QueueUsingStack
+		//queue1 = new QueueUsingStack<Integer>(4);
+		//queue2 = new QueueUsingStack<Integer>(2);
+		//queue3 = new QueueUsingStack<Integer>(2);
 	}
 
 	// MÉTODOS DE TESTE

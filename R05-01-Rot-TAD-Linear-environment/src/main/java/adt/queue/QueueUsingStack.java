@@ -2,9 +2,10 @@ package adt.queue;
 
 import adt.stack.Stack;
 import adt.stack.StackImpl;
+import adt.stack.StackOverflowException;
+import adt.stack.StackUnderflowException;
 
 public class QueueUsingStack<T> implements Queue<T> {
-
 	private Stack<T> stack1;
 	private Stack<T> stack2;
 
@@ -15,32 +16,56 @@ public class QueueUsingStack<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (element != null) {
+			if (this.isFull()) {
+				throw new QueueOverflowException();
+			}
+			while (!this.stack1.isEmpty()) {
+				try {
+					this.stack2.push(this.stack1.pop());
+				} catch (StackOverflowException | StackUnderflowException e) {
+					throw new QueueOverflowException();
+				}
+			}
+			try {
+				this.stack1.push(element);
+			} catch (StackOverflowException e) {
+				throw new QueueOverflowException();
+			}
+			while (!this.stack2.isEmpty()) {
+				try {
+					this.stack1.push(this.stack2.pop());
+				} catch (StackOverflowException | StackUnderflowException e) {
+					throw new QueueOverflowException();
+				}
+			}
+		}
 	}
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (this.isEmpty()) {
+			throw new QueueUnderflowException();
+		}
+		try {
+			return this.stack1.pop();
+		} catch (StackUnderflowException e) {
+			throw new QueueUnderflowException();
+		}
 	}
 
 	@Override
 	public T head() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.stack1.top();
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return (this.stack1.isEmpty());
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return (this.stack1.isFull());
 	}
-
 }
