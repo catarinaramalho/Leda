@@ -14,10 +14,11 @@ public class QueueImpl<T> implements Queue<T> {
 	@Override
 	public T head() {
 		T head = null;
-		if (isEmpty()) {
-			return head;
+		if (!isEmpty()) {
+			head = this.array[0];
+			;
 		}
-		return this.array[0];
+		return head;
 	}
 
 	@Override
@@ -38,10 +39,10 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
+		if (isFull()) {
+			throw new QueueOverflowException();
+		}
 		if (element != null) {
-			if (isFull()) {
-				throw new QueueOverflowException();
-			}
 			this.array[++this.tail] = element;
 		}
 
@@ -53,7 +54,7 @@ public class QueueImpl<T> implements Queue<T> {
 			throw new QueueUnderflowException();
 		}
 		T dequeued = this.array[0];
-		shiftLeft();
+		this.shiftLeft();
 		this.tail--;
 		return dequeued;
 	}

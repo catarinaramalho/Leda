@@ -16,11 +16,12 @@ public class CircularQueue<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if (element != null) {
-			if (this.isFull()) {
-				throw new QueueOverflowException();
+		if (this.isFull()) {
+			throw new QueueOverflowException();
 
-			}
+		}
+		if (element != null) {
+
 			if (this.isEmpty()) {
 				this.head = 0;
 				this.tail = 0;
@@ -65,12 +66,12 @@ public class CircularQueue<T> implements Queue<T> {
 
 	@Override
 	public boolean isEmpty() {
-		return (this.tail == -1 && this.head == -1);
+		return this.elements == 0;
 	}
 
 	@Override
 	public boolean isFull() {
-		return ((this.tail + 1) % this.array.length == this.head);
+		return this.elements == this.array.length;
 	}
 
 }

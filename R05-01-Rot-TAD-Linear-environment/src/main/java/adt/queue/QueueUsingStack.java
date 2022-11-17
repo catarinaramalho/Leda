@@ -16,30 +16,24 @@ public class QueueUsingStack<T> implements Queue<T> {
 
 	@Override
 	public void enqueue(T element) throws QueueOverflowException {
-		if (element != null) {
-			if (this.isFull()) {
-				throw new QueueOverflowException();
-			}
-			while (!this.stack1.isEmpty()) {
-				try {
-					this.stack2.push(this.stack1.pop());
-				} catch (StackOverflowException | StackUnderflowException e) {
-					throw new QueueOverflowException();
-				}
-			}
-			try {
-				this.stack1.push(element);
-			} catch (StackOverflowException e) {
-				throw new QueueOverflowException();
-			}
-			while (!this.stack2.isEmpty()) {
-				try {
-					this.stack1.push(this.stack2.pop());
-				} catch (StackOverflowException | StackUnderflowException e) {
-					throw new QueueOverflowException();
-				}
-			}
+		if (this.isFull()) {
+			throw new QueueOverflowException();
 		}
+		try {
+			if (element != null) {
+				while (!this.stack1.isEmpty()) {
+					this.stack2.push(this.stack1.pop());
+				}
+
+				this.stack1.push(element);
+				while (!this.stack2.isEmpty()) {
+					this.stack1.push(this.stack2.pop());
+				}
+			}
+		} catch (StackOverflowException | StackUnderflowException e) {
+			throw new QueueOverflowException();
+		}
+
 	}
 
 	@Override
@@ -56,7 +50,11 @@ public class QueueUsingStack<T> implements Queue<T> {
 
 	@Override
 	public T head() {
-		return this.stack1.top();
+		T head = null;
+		if (!isEmpty()) {
+			head = this.stack1.top();
+		}
+		return head;
 	}
 
 	@Override
