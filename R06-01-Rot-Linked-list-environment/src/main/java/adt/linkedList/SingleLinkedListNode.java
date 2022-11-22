@@ -16,11 +16,11 @@ public class SingleLinkedListNode<T> {
 	}
 
 	public T getData() {
-		return data;
+		return this.data;
 	}
 
 	public SingleLinkedListNode<T> getNext() {
-		return next;
+		return this.next;
 	}
 
 	public boolean isNIL() {

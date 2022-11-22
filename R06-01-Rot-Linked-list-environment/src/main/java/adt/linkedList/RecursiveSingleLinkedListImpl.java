@@ -12,38 +12,78 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		return this.data == null;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(this.isEmpty()){
+			return 0;
+		} return 1 + this.next.size();
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T search = null;
+		if(!this.isEmpty() && element!=null){
+			if(this.data.equals(element)){
+				search = this.data;
+			}
+			else{
+				search = this.next.search(element);
+			}
+		
+		}
+		return search;
 	}
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (element != null){
+			if (this.isEmpty()){
+				this.setData(element);
+			} else {
+				if(this.getNext() == null){
+					RecursiveDoubleLinkedListImpl<T> aux = new RecursiveDoubleLinkedListImpl<>();
+					aux.setData(element);
+					this.setNext(aux);
+				} else {
+					this.next.insert(element);
+				}
+			}
+		}
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if(this.isEmpty() && element != null){
+			if(this.getData().equals(element)){
+				if(this.getData().equals(element)){
+					if(this.getNext() != null){
+						this.setData(this.next.getData());
+						this.setNext(this.next.next);
+					} else {
+						this.setData(data);
+					}
+				} else if (this.getNext() != null){
+					this.next.remove(element);
+				}
+			}
+		}
 	}
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		T[] array = (T[]) new Object[this.size()];
+		this.toArray(array,0);
+		return array;
+	}
+
+	private void toArray(T[] array, int i){
+		if(!this.isEmpty()){
+			array[i] = this.data;
+			this.next.toArray(array, i+1);
+		}
 	}
 
 	public T getData() {
