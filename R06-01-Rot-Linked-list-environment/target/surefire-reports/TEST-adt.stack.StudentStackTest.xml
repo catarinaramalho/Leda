@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="adt.queue.StudentQueueTest" time="0.008" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="adt.stack.StudentStackTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.15+10-Ubuntu-0ubuntu0.21.10.1"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/catarina/Leda/R05-01-Rot-TAD-Linear-environment"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/catarina/Leda/R06-01-Rot-Linked-list-environment"/>
     <property name="java.vm.vendor" value="Private Build"/>
     <property name="java.vendor.url" value="Unknown"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="BR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/catarina/Leda/R05-01-Rot-TAD-Linear-environment"/>
+    <property name="user.dir" value="/home/catarina/Leda/R06-01-Rot-Linked-list-environment"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.15+10-Ubuntu-0ubuntu0.21.10.1"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
@@ -60,14 +60,11 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueue" time="0"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testHead" time="0"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueueCircular" time="0.001"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testHeadNull" time="0"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueueNull" time="0.003"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testDequeueComErro" time="0.001"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testDequeue" time="0.001"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testIsFull" time="0"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testIsEmpty" time="0.001"/>
-  <testcase classname="adt.queue.StudentQueueTest" name="testEnqueueComErro" time="0.001"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPop" time="0.014"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testTop" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPush" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPushComErro" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testPopComErro" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testIsFull" time="0"/>
+  <testcase classname="adt.stack.StudentStackTest" name="testIsEmpty" time="0.001"/>
 </testsuite>

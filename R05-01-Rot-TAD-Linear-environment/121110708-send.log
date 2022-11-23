@@ -37,3 +37,53 @@
   <level>FINE</level>
   <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 150.165.74.102 at 16-11-2022 17*21*48</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-16T22:11:56.192-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 192.168.0.14 at 16-11-2022 22*09*05</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-16T22:14:11.418-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 192.168.0.14 at 16-11-2022 22*13*34</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-16T22:17:06.168-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 192.168.0.14 at 16-11-2022 22*16*55</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-16T22:24:26.784-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 192.168.0.14 at 16-11-2022 22*21*15</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-11-16T22:25:12.269-0300</date>
+  <logger>CATARINA RAMALHO DOS SANTOS</logger>
+  <level>FINE</level>
+  <message>File 121110708-CATARINA RAMALHO DOS SANTOS.zip was received. It was sent by CATARINA RAMALHO DOS SANTOS from IP 192.168.0.14 at 16-11-2022 22*25*12</message>
+</record>
