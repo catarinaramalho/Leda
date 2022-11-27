@@ -29,7 +29,7 @@ public class QueueDoubleLinkedListImpl<T> implements Queue<T> {
 		if (isEmpty()) {
 			throw new QueueUnderflowException();
 		}
-		T dequeued = this.head();
+		T dequeued = ((DoubleLinkedListImpl<T>) this.list).getHead().getData();
 		this.list.removeFirst();
 		return dequeued;
 	}

@@ -35,7 +35,6 @@ public class StudentStackTest {
 		stack1 = new StackDoubleLinkedListImpl<>(4);
 		stack2 = new StackDoubleLinkedListImpl<>(2);
 		stack3 = new StackDoubleLinkedListImpl<>(4);
-		;
 	}
 
 	// MÉTODOS DE TESTE

@@ -13,18 +13,13 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 	public void insert(T element) {
 		if (element != null) {
 			if (this.isEmpty()) {
-				RecursiveDoubleLinkedListImpl<T> lastNil = new RecursiveDoubleLinkedListImpl<>();
-
-				this.data = element;
-				this.next = lastNil;
-				lastNil.previous = this;
+				this.setData(element);
+				this.setNext(new RecursiveDoubleLinkedListImpl<T>());
 				if (this.previous == null) {
-					RecursiveDoubleLinkedListImpl<T> headNil = new RecursiveDoubleLinkedListImpl<>();
-					this.previous = headNil;
-					headNil.setNext(this);
+					this.setPrevious(new RecursiveDoubleLinkedListImpl<T>());
 				}
 			} else {
-				this.next.insert(element);
+				this.getNext().insert(element);
 			}
 		}
 	}

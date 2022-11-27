@@ -19,7 +19,7 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 			throw new StackOverflowException();
 		}
 		if (element != null) {
-			this.top.insertFirst(element);
+			this.top.insert(element);
 		}
 
 	}
@@ -29,14 +29,14 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 		if (this.isEmpty()) {
 			throw new StackUnderflowException();
 		}
-		T value = ((DoubleLinkedListImpl<T>) this.top).getHead().getData();
-		this.top.removeFirst();
+		T value = ((DoubleLinkedListImpl<T>) this.top).getLast().getData();
+		this.top.removeLast();
 		return value;
 	}
 
 	@Override
 	public T top() {
-		return ((DoubleLinkedListImpl<T>) this.top).getHead().getData();
+		return ((DoubleLinkedListImpl<T>) this.top).getLast().getData();
 	}
 
 	@Override
