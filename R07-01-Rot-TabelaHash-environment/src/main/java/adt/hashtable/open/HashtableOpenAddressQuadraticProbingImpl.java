@@ -60,8 +60,7 @@ public class HashtableOpenAddressQuadraticProbingImpl<T extends Storable>
 		if (!isEmpty() && element != null) {
 			int probe = 0;
 			int index = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, probe);
-			while (this.table[index] != null && !this.table[index].equals(this.deletedElement)
-					&& !this.table[index].equals(element) && probe < this.table.length) {
+			while (this.table[index] != null && !this.table[index].equals(element) && probe < this.table.length) {
 				probe++;
 				index = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, probe);
 			}

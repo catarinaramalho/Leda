@@ -22,7 +22,8 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 			int probe = 0;
 			int index = ((HashFunctionLinearProbing<T>) this.hashFunction).hash(element, probe);
 
-			while (this.table[index] != null && !this.table[index].equals(this.deletedElement)) {
+			while (this.table[index] != null && !this.table[index].equals(this.deletedElement)
+					&& probe < this.table.length) {
 				probe++;
 				index = ((HashFunctionLinearProbing<T>) this.hashFunction).hash(element, probe);
 				this.COLLISIONS++;
@@ -59,7 +60,7 @@ public class HashtableOpenAddressLinearProbingImpl<T extends Storable> extends
 		if (!isEmpty() && element != null) {
 			int probe = 0;
 			int index = ((HashFunctionLinearProbing<T>) this.hashFunction).hash(element, probe);
-			while (this.table[index] != null && !this.table[index].equals(this.deletedElement)
+			while (this.table[index] != null
 					&& !this.table[index].equals(element) && probe < this.table.length) {
 				probe++;
 				index = ((HashFunctionLinearProbing<T>) this.hashFunction).hash(element, probe);
