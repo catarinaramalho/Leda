@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="adt.bst.StudentBSTTest" time="0.034" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="adt.bst.StudentBSTTest" time="0.029" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.15+10-Ubuntu-0ubuntu0.21.10.1"/>
@@ -60,11 +60,11 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="adt.bst.StudentBSTTest" name="testSucessorPredecessor" time="0.01"/>
-  <testcase classname="adt.bst.StudentBSTTest" name="testInit" time="0.01"/>
-  <testcase classname="adt.bst.StudentBSTTest" name="testSize" time="0"/>
-  <testcase classname="adt.bst.StudentBSTTest" name="testHeight" time="0.001"/>
-  <testcase classname="adt.bst.StudentBSTTest" name="testMinMax" time="0.001"/>
-  <testcase classname="adt.bst.StudentBSTTest" name="testRemove" time="0.011"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testSucessorPredecessor" time="0.011"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testInit" time="0.015"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testSize" time="0.001"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testHeight" time="0"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testMinMax" time="0"/>
+  <testcase classname="adt.bst.StudentBSTTest" name="testRemove" time="0.001"/>
   <testcase classname="adt.bst.StudentBSTTest" name="testSearch" time="0.001"/>
 </testsuite>
