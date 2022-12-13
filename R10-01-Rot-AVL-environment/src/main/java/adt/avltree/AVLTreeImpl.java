@@ -2,6 +2,7 @@ package adt.avltree;
 
 import adt.bst.BSTImpl;
 import adt.bst.BSTNode;
+import adt.bt.Util;
 
 /**
  * 
@@ -28,19 +29,101 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 
 	// AUXILIARY
 	protected int calculateBalance(BSTNode<T> node) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		int result = 0;
+
+		if (!node.isEmpty()){
+			result = this.height((BSTNode<T>) node.getLeft()) - this.height((BSTNode<T>) node.getRight());
+		}return result;
 	}
 
 	// AUXILIARY
 	protected void rebalance(BSTNode<T> node) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		BSTNode<T> newRoot = null;
+		int balance = this.calculateBalance(node);
+
+		if (Math.abs(balance) > 1) {
+			if (balance > 1) {
+				if (this.calculateBalance((BSTNode<T>) node.getLeft()) >= 0){
+					newRoot = Util.rightRotation(node);
+				}else{
+					newRoot = Util.doubleRightRotation(node);
+				}
+			
+			}else{
+				if (this.calculateBalance((BSTNode<T>) node.getRight()) <= 0){
+					newRoot = Util.leftRotation(node);
+				}else{
+					newRoot = Util.doubleLeftRotation(node);
+				}
+			}
+
+		} if (this.getRoot().equals(node) && newRoot != null) {
+			this.root = newRoot;
+		}
+			
 	}
 
 	// AUXILIARY
 	protected void rebalanceUp(BSTNode<T> node) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (node.getParent() != null) {
+			this.rebalance((BSTNode<T>) node.getParent());
+			this.rebalanceUp((BSTNode<T>) node.getParent());
+		}
+	}
+
+
+	@Override
+	public void insert (T element) {
+		if (element != null) {
+			this.insertRecursive(this.root, element);
+		}
+	}
+
+	private void insertRecursive (BSTNode<T> currentNode, T element) {
+		if (currentNode.isEmpty()) {
+			currentNode.setData(element);
+			currentNode.setRight(new BSTNode.Builder<T>().parent(currentNode).build());
+			currentNode.setLeft(new BSTNode.Builder<T>().parent(currentNode).build());
+		} else{
+			if (element.compareTo(currentNode.getData()) > 0){
+				this.insertRecursive((BSTNode<T>) currentNode.getRight(), element);
+			}else{
+				this.insertRecursive((BSTNode<T>) currentNode.getLeft(), element);
+			}rebalance(currentNode);
+		}
+	}
+
+	@Override
+	public void remove (T element) {
+		if (element != null) {
+			BSTNode<T> node = this.search(element);
+
+			if (!node.isEmpty()) { 
+				if (node.isLeaf()) { // Primeiro caso: nó é folha.
+					node.setData(null);
+					node.setLeft(null);
+					node.setRight(null);
+					rebalanceUp(node);
+				} else if (node.getRight().isEmpty() || node.getLeft().isEmpty()) { // Segundo caso: nó tem apenas um filho (esquerda ou direita)
+					BSTNode<T> childNode = node.getRight().isEmpty() ? (BSTNode<T>) node.getLeft() : (BSTNode<T>) node.getRight();
+					if (this.root.equals(node)) {
+						this.root = childNode;
+						this.root.setParent(null);
+					}
+					else { 
+						childNode.setParent(node.getParent());
+						if (node.getParent().getLeft().equals(node))
+							node.getParent().setLeft(childNode);
+						else
+							node.getParent().setRight(childNode);
+					}
+					rebalanceUp(node);
+				} else { // Terceiro caso: Nó tem dois filhos
+					T sucessor = this.sucessor(node.getData()).getData();
+					this.remove(sucessor);
+					node.setData(sucessor);
+				}
+			}
+		}
 	}
 }

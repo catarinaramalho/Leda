@@ -20,13 +20,13 @@ public class Util {
 		node.setParent(pivot);
 		node.getRight().setParent(node);
 
-		if (pivot.getParent() != null)
-			if (pivot.getParent().getRight().equals(node))
+		if (pivot.getParent() != null) {
+			if (pivot.getParent().getRight().equals(node)) {
 				pivot.getParent().setRight(pivot);
-			else
+			}else{
 				pivot.getParent().setLeft(pivot);
-
-		return pivot;
+			}
+		}return pivot;
 	}
 	 // nao sei se tinha esses metodos
 	public static <T extends Comparable<T>> BSTNode<T> doubleLeftRotation (BSTNode<T> node) {
@@ -54,13 +54,14 @@ public class Util {
 		node.setParent(pivot);
 		node.getLeft().setParent(node);
 
-		if (pivot.getParent() != null)
-			if (pivot.getParent().getLeft().equals(node))
+		if (pivot.getParent() != null) {
+			if (pivot.getParent().getLeft().equals(node)) {
 				pivot.getParent().setLeft(pivot);
-			else
+			} else{
 				pivot.getParent().setRight(pivot);
 
-		return pivot;
+			}
+		} return pivot;
 	
 	}
 
