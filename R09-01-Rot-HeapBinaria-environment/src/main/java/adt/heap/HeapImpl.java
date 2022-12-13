@@ -85,29 +85,21 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 	 * para subir os elementos na heap.
 	 */
 	private void heapify(int position) {
-		heapify(this.heap, position);
-	}
-
-	private void heapify(T[] array, int position) {
-
-		if (position >= 0) {
-			int largest;
+		if (position >= 0 && position < this.size()) {
+			int largest = position;
 			int left = left(position);
 			int right = right(position);
-			if (left <= this.index && comparator.compare(array[left], array[position]) > 0) {
+			if (left <= this.index && comparator.compare(this.getHeap()[left], this.getHeap()[position]) > 0) {
 				largest = left;
-			} else {
-				largest = position;
 			}
-			if (right <= this.index && comparator.compare(array[right], array[largest]) > 0) {
+			if (right <= this.index && comparator.compare(this.getHeap()[right], this.getHeap()[largest]) > 0) {
 				largest = right;
 			}
 			if (largest != position) {
-				Util.swap(array, position, largest);
-				heapify(array, largest);
+				Util.swap(this.getHeap(), position, largest);
+				heapify(largest);
 			}
 		}
-
 	}
 
 	@Override
@@ -121,53 +113,69 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 	}
 
 	private void insert(T[] array, T element) {
-		this.index += 1;
-		int i = this.size() - 1;
-		while (i > 0 && comparator.compare(array[parent(i)], element) < 0) {
-			array[i] = array[parent(i)];
-			i = parent(i);
+		if (element != null) {
+			int i = ++this.index;
+			while (i > 0 && comparator.compare(array[parent(i)], element) < 0) {
+				array[i] = array[parent(i)];
+				i = parent(i);
+			}
+			array[i] = element;
 		}
-		array[i] = element;
+
 	}
 
 	@Override
 	public void buildHeap(T[] array) {
-		this.heap = array;
-		this.index = array.length - 1;
-		for (int i = array.length - 1 / 2; i >= 0; i--) {
-			heapify(i);
+		if (array != null) {
+			this.heap = array;
+			this.index = array.length - 1;
+			for (int i = this.index / 2; i >= 0; i--) {
+				this.heapify(i);
+			}
 		}
+
 	}
 
 	@Override
 	public T extractRootElement() {
+		T rootElement = this.rootElement();
 		if (!this.isEmpty()) {
-			T max = heap[0];
-			heap[0] = heap[this.index];
-			this.index -= 1;
-			heapify(0);
-			return max;
+			this.heap[0] = this.heap[this.index--];
+			this.heapify(0);
 		}
-		return null;
+		return rootElement;
 	}
 
 	@Override
 	public T rootElement() {
+		T rootElement = null;
+
 		if (!this.isEmpty()) {
-			T max = heap[0];
-			return max;
+			rootElement = this.heap[0];
+
 		}
-		return null;
+		return rootElement;
 	}
 
 	@Override
 	public T[] heapsort(T[] array) {
-		buildHeap(array);
-		T[] aux = (T[]) new Comparable[array.length];
-		for (int i = array.length - 1; i >= 0; i--) {
-			aux[i] = this.extractRootElement();
+		if (array != null && array.length >= 2) {
+			this.buildHeap(array);
+			for (int i = this.index; i >= 0; i--) {
+				Util.swap(array, 0, i);
+				this.index--;
+				this.heapify(0);
+			}
+			if (this.heap[0].compareTo(this.heap[1]) > 0) {
+				int j = array.length - 1;
+				for (int i = 0; i < j; i++) {
+					Util.swap(array, i, j--);
+				}
+
+			}
 		}
-		return aux;
+
+		return array;
 	}
 
 	@Override
