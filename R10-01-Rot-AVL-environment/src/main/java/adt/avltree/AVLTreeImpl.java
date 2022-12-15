@@ -10,12 +10,12 @@ import adt.bt.Util;
  * A CLASSE AVLTree herda de BSTImpl. VOCE PRECISA SOBRESCREVER A IMPLEMENTACAO
  * DE BSTIMPL RECEBIDA COM SUA IMPLEMENTACAO "OU ENTAO" IMPLEMENTAR OS SEGUITNES
  * METODOS QUE SERAO TESTADOS NA CLASSE AVLTREE:
- *  - insert
- *  - preOrder
- *  - postOrder
- *  - remove
- *  - height
- *  - size
+ * - insert
+ * - preOrder
+ * - postOrder
+ * - remove
+ * - height
+ * - size
  *
  * @author Claudio Campelo
  *
@@ -31,9 +31,10 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 	protected int calculateBalance(BSTNode<T> node) {
 		int result = 0;
 
-		if (!node.isEmpty()){
+		if (!node.isEmpty()) {
 			result = this.height((BSTNode<T>) node.getLeft()) - this.height((BSTNode<T>) node.getRight());
-		}return result;
+		}
+		return result;
 	}
 
 	// AUXILIARY
@@ -43,24 +44,25 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 
 		if (Math.abs(balance) > 1) {
 			if (balance > 1) {
-				if (this.calculateBalance((BSTNode<T>) node.getLeft()) >= 0){
+				if (this.calculateBalance((BSTNode<T>) node.getLeft()) >= 0) {
 					newRoot = Util.rightRotation(node);
-				}else{
+				} else {
 					newRoot = Util.doubleRightRotation(node);
 				}
-			
-			}else{
-				if (this.calculateBalance((BSTNode<T>) node.getRight()) <= 0){
+
+			} else {
+				if (this.calculateBalance((BSTNode<T>) node.getRight()) <= 0) {
 					newRoot = Util.leftRotation(node);
-				}else{
+				} else {
 					newRoot = Util.doubleLeftRotation(node);
 				}
 			}
 
-		} if (this.getRoot().equals(node) && newRoot != null) {
+		}
+		if (this.getRoot().equals(node) && newRoot != null) {
 			this.root = newRoot;
 		}
-			
+
 	}
 
 	// AUXILIARY
@@ -71,46 +73,47 @@ public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 		}
 	}
 
-
 	@Override
-	public void insert (T element) {
+	public void insert(T element) {
 		if (element != null) {
-			this.insertRecursive(this.root, element);
+			this.insert(this.root, element);
 		}
 	}
 
-	private void insertRecursive (BSTNode<T> currentNode, T element) {
-		if (currentNode.isEmpty()) {
-			currentNode.setData(element);
-			currentNode.setRight(new BSTNode.Builder<T>().parent(currentNode).build());
-			currentNode.setLeft(new BSTNode.Builder<T>().parent(currentNode).build());
-		} else{
-			if (element.compareTo(currentNode.getData()) > 0){
-				this.insertRecursive((BSTNode<T>) currentNode.getRight(), element);
-			}else{
-				this.insertRecursive((BSTNode<T>) currentNode.getLeft(), element);
-			}rebalance(currentNode);
+	private void insert(BSTNode<T> node, T element) {
+		if (node.isEmpty()) {
+			node.setData(element);
+			node.setRight(new BSTNode.Builder<T>().parent(node).build());
+			node.setLeft(new BSTNode.Builder<T>().parent(node).build());
+		} else {
+			if (element.compareTo(node.getData()) > 0) {
+				this.insert((BSTNode<T>) node.getRight(), element);
+			} else {
+				this.insert((BSTNode<T>) node.getLeft(), element);
+			}
+			rebalance(node);
 		}
 	}
 
 	@Override
-	public void remove (T element) {
+	public void remove(T element) {
 		if (element != null) {
 			BSTNode<T> node = this.search(element);
 
-			if (!node.isEmpty()) { 
+			if (!node.isEmpty()) {
 				if (node.isLeaf()) { // Primeiro caso: nó é folha.
 					node.setData(null);
 					node.setLeft(null);
 					node.setRight(null);
 					rebalanceUp(node);
-				} else if (node.getRight().isEmpty() || node.getLeft().isEmpty()) { // Segundo caso: nó tem apenas um filho (esquerda ou direita)
-					BSTNode<T> childNode = node.getRight().isEmpty() ? (BSTNode<T>) node.getLeft() : (BSTNode<T>) node.getRight();
+				} else if (node.getRight().isEmpty() || node.getLeft().isEmpty()) { // Segundo caso: nó tem apenas um
+																					// filho (esquerda ou direita)
+					BSTNode<T> childNode = node.getRight().isEmpty() ? (BSTNode<T>) node.getLeft()
+							: (BSTNode<T>) node.getRight();
 					if (this.root.equals(node)) {
 						this.root = childNode;
 						this.root.setParent(null);
-					}
-					else { 
+					} else {
 						childNode.setParent(node.getParent());
 						if (node.getParent().getLeft().equals(node))
 							node.getParent().setLeft(childNode);

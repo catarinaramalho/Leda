@@ -16,7 +16,7 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 	private int RLcounter;
 
 	public AVLCountAndFillImpl() {
-		
+
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 	}
 
 	@Override
-	protected void rebalance (BSTNode<T> node) {
+	protected void rebalance(BSTNode<T> node) {
 		BSTNode<T> newRoot = null;
 		int balance = this.calculateBalance(node);
 
@@ -49,17 +49,15 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 				if (this.calculateBalance((BSTNode<T>) node.getLeft()) >= 0) {
 					newRoot = Util.rightRotation(node);
 					this.LLcounter++;
-				}
-				else {
+				} else {
 					newRoot = Util.doubleRightRotation(node);
 					this.LRcounter++;
 				}
-			}else{
+			} else {
 				if (this.calculateBalance((BSTNode<T>) node.getRight()) <= 0) {
 					newRoot = Util.leftRotation(node);
 					this.RRcounter++;
-				}
-				else {
+				} else {
 					newRoot = Util.doubleLeftRotation(node);
 					this.RLcounter++;
 				}
@@ -84,7 +82,7 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 		}
 	}
 
-	private boolean avlIterate (T[] array, int left, int right, int height) {
+	private boolean avlIterate(T[] array, int left, int right, int height) {
 		boolean verify = false;
 		if (right > left) {
 			int middle = left + (right - left) / 2;
@@ -92,14 +90,13 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 			if (height == 0) {
 				this.insert(array[middle]);
 				verify = true;
-			}
-			else {
-				verify = avlIterate(array, left, middle, height - 1) || avlIterate(array, middle + 1, right, height - 1);
+			} else {
+				verify = avlIterate(array, left, middle, height - 1)
+						|| avlIterate(array, middle + 1, right, height - 1);
 			}
 		}
 
 		return verify;
 	}
-	
 
 }
