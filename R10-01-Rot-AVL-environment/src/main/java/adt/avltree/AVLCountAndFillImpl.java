@@ -1,8 +1,10 @@
 package adt.avltree;
 
-import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import adt.bst.BSTNode;
 import adt.bt.Util;
@@ -21,82 +23,123 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 
 	@Override
 	public int LLcount() {
-		return LLcounter;
+  		return LLcounter;
 	}
 
 	@Override
 	public int LRcount() {
-		return LRcounter;
+  		return LRcounter;
 	}
 
 	@Override
 	public int RRcount() {
-		return RRcounter;
+ 		return RRcounter;
 	}
 
 	@Override
 	public int RLcount() {
-		return RLcounter;
-	}
-
-	@Override
-	protected void rebalance(BSTNode<T> node) {
-		BSTNode<T> newRoot = null;
-		int balance = this.calculateBalance(node);
-
-		if (Math.abs(balance) > 1) {
-			if (balance > 1) {
-				if (this.calculateBalance((BSTNode<T>) node.getLeft()) >= 0) {
-					newRoot = Util.rightRotation(node);
-					this.LLcounter++;
-				} else {
-					newRoot = Util.doubleRightRotation(node);
-					this.LRcounter++;
-				}
-			} else {
-				if (this.calculateBalance((BSTNode<T>) node.getRight()) <= 0) {
-					newRoot = Util.leftRotation(node);
-					this.RRcounter++;
-				} else {
-					newRoot = Util.doubleLeftRotation(node);
-					this.RLcounter++;
-				}
-			}
-		}
-
-		if (this.getRoot().equals(node) && newRoot != null) {
-			this.root = newRoot;
-		}
-
+  		return RLcounter;
 	}
 
 	@Override
 	public void fillWithoutRebalance(T[] array) {
-		Set<T> treeSet = new TreeSet<>(Arrays.asList(this.order()));
-		treeSet.addAll(Arrays.asList(array));
-		array = (T[]) treeSet.toArray(new Comparable[0]);
-		this.root = new BSTNode<>();
-		int height = 0;
-		while (avlIterate(array, 0, array.length, height)) {
-			height++;
-		}
-	}
 
-	private boolean avlIterate(T[] array, int left, int right, int height) {
-		boolean verify = false;
-		if (right > left) {
-			int middle = left + (right - left) / 2;
+		if (array != null && array.length > 0) {
 
-			if (height == 0) {
-				this.insert(array[middle]);
-				verify = true;
-			} else {
-				verify = avlIterate(array, left, middle, height - 1)
-						|| avlIterate(array, middle + 1, right, height - 1);
+			List<T> list = new ArrayList<>();
+			for (T element : preOrder()){
+				list.add(element);
+
+			} for (T element : array){
+				if (!list.contains(element)) {
+					list.add(element);
+				}
+
 			}
-		}
+			this.root = new BSTNode<>();
+			Collections.sort(list);
+			Map<Integer, List<T>> mapa = new HashMap<>();
+			auxFillWithoutRebalance(mapa, 0, 0, list.size() - 1, list);
 
-		return verify;
+			int height = 0;
+			while (mapa.containsKey(height)) {
+
+				for (T element : mapa.get(height)){
+					insert(element);
+
+				}
+				height ++;
+			}
+  		}
 	}
 
+	private void auxFillWithoutRebalance(Map<Integer, List<T>> map, int height, int leftIndex, int rightIndex, List<T> array) {
+
+		if (leftIndex <= rightIndex) {
+
+			int middle = (leftIndex + rightIndex) / 2;
+			T element = array.get(middle);
+
+			if (!map.containsKey(height)){
+				map.put(height, new ArrayList<T>());
+
+			}
+			map.get(height).add(element);
+			auxFillWithoutRebalance(map, height + 1, leftIndex, middle - 1, array);
+			auxFillWithoutRebalance(map, height + 1, middle + 1, rightIndex, array);
+		}
+	}
+
+	@Override
+	protected void rebalance(BSTNode<T> node) {
+
+		int balance = calculateBalance(node);
+
+		if (balance > 1){
+			rebalanceLeft(node);
+		} else if (balance < -1){
+			rebalanceRight(node);
+		}
+
+	}
+
+	private void rebalanceLeft(BSTNode<T> node) {
+
+		BSTNode<T> aux;
+
+		if (calculateBalance((BSTNode<T>) node.getLeft()) >= 0) {
+		
+			aux = Util.rightRotation(node);
+			LLcounter++;
+		} else {
+		
+			Util.leftRotation((BSTNode<T>) node.getLeft());
+			aux = Util.rightRotation(node);
+			LRcounter++;
+		}
+
+		if (aux.getParent() == null){
+			this.root = aux;
+		}
+
+	}
+
+	private void rebalanceRight(BSTNode<T> node) {
+
+		BSTNode<T> aux;
+
+		if (calculateBalance((BSTNode<T>) node.getRight()) <= 0) {
+			aux = Util.leftRotation(node);
+			RRcounter++;
+		} else {	
+			Util.rightRotation((BSTNode<T>) node.getRight());
+			aux = Util.leftRotation(node);
+			RLcounter++;
+		}
+
+		if (aux.getParent() == null){
+			this.root = aux;
+		}
+
+	}
 }
